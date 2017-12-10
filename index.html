@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Text to Speech using google translate tts</title>
+    </head>
+
+    <body>
+        <input type="text" name="say-it" id="say-it">
+        <a href="#">Say it!</a>
+
+        <audio src="" hidden></audio>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+        <script>
+            $(function () {
+                $('a').on('click', function (e) {
+                    e.preventDefault();
+                    let text = $('#say-it').val()
+                    text = encodeURIComponent(text);
+                    let url =
+                        `https://translate.google.com/translate_tts?ie=UTF-8&q=${text}&tl=en&client=tw-ob`;
+
+                    $('audio').attr('src', url).get(0).play();
+
+                });
+            });
+        </script>
+    </body>
+
+</html>
